@@ -31,10 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
-DEBUG = False
-CSRF_TRUSTED_ORIGINS = ['https://8000-harmonicamen-astroshop-37z6o1iwvkr.ws.codeinstitute-ide.net']  # noqa
+DEBUG = True
+CSRF_TRUSTED_ORIGINS = ['https://https://harmonicame-testastrosh-1hwfbm2n1dz.ws-eu118.gitpod.io']  # noqa
 ALLOWED_HOSTS = [
-    '8000-harmonicamen-astroshop-37z6o1iwvkr.ws.codeinstitute-ide.net',
+    '8000-harmonicame-testastrosh-1hwfbm2n1dz.ws-eu118.gitpod.io',
     '.herokuapp.com'
 ]
 
