@@ -1,0 +1,747 @@
+/* Root variables for theme colors, padding, and font styles */
+:root {
+    --primary-color: #222831; /* Primary color for main elements */
+    --attrib-color: #393E46; /* Secondary attribute color */
+    --primary-color-highlight: #222831; /* Highlight color for hover effects */
+    --bs-body-bg: #ffffff; /* Body background color */
+    --bs-body-bg-transparent: rgba(128, 128, 128, 0.75);
+    --bs-body-box-shadow: rgba(0, 0, 0, .4);
+    --bs-body-font-family: 'Lato', sans-serif; /* Font family for body */
+    --accent-color: #00ADB5; /* Accent color used in buttons, links */
+    --main-text-color: #ffffff; /* Primary text color */
+    --main-text-color-invers: #000000; /* Inverse text color */
+    --secondary-color-highlight: #FFC400; /* Highlight color for hover effects */
+}
+
+/* Set the height of the HTML element to 100% and remove default margin and padding */
+html {
+    height: 100%;
+    margin: 0; 
+    padding: 0; 
+}
+
+/* Style the body to have a full-page background, custom font, and prevent horizontal scrolling */
+body {
+    background-size: cover;
+    color: var(--attrib-color);
+    font-family: var(--bs-body-font-family);
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+/* Adds spacing below each paragraph element */
+p {
+    margin-bottom: 1rem;
+}
+
+/* Styling for category links */
+.category-links a {
+    text-decoration: none; 
+    color: var(--main-text-color); 
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.category-links a:hover {
+    color: var(--secondary-color-highlight); /* Change color on hover (golden) */
+    text-decoration: underline; 
+    transform: scale(1.10); /* Slightly enlarge the text on hover */
+}
+
+/* Ensure all Bootstrap containers, rows, and columns have no gutters */
+.row.g-0 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Styling for product images */
+.product-image {
+    max-width: 400px;
+    /* Cap the image width */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    display: block;
+    /* Ensure proper layout */
+}
+
+/* Styling for navigation links on the index page */
+.nav-link-index:hover {
+    color: var(--secondary-color-highlight) !important; /* Change text color to gold */
+    text-decoration: underline; /* Add underline */
+    transform: scale(1.1); /* Slightly enlarge the item */
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.nav-link-index {
+    text-decoration: none; 
+
+    transition: color 0.3s ease, transform 0.2s ease; /* Add smooth effect to normal state */
+}
+
+/* Style the box around the link */
+.cart-box {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    /* Box border color */
+    border-radius: 0px;
+    background-color: #f8f9fa;
+    /* Background color */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Hover effect */
+.cart-box:hover {
+    background-color: #e9ecef;
+    /* Darker background on hover */
+    border-color: #aaa;
+    /* Darker border on hover */
+}
+
+.cart-box .nav-link {
+    color: inherit;
+}
+
+/* Styling to invert colors on hover */
+.cart-link {
+    color: var(--main-text-color);
+}
+
+.cart-link:hover {
+    color: var(--main-text-color-invers);
+}
+
+.cart-link .badge {
+    background-color: var(--main-text-color);
+    color: var(--main-text-color-invers);
+}
+
+/* Badge styling for the cart link */
+.cart-link:hover .badge {
+    background-color: var(--main-text-color-invers);
+    color: var(--main-text-color);
+}
+/* Styling for the AstroShop container */
+.astroshop-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Styling for the AstroShop image container */
+.astroshop-image {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* Set a specific height for the image */
+    overflow: hidden;
+}
+
+/* Styling for images inside the AstroShop image container */
+.astroshop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+}
+
+/* Styles for centering text over an image with a semi-transparent background */
+.image-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the text inside the image */
+    color: var(--main-text-color);
+    text-align: center;
+    background-color: var(--bs-body-box-shadow);
+    /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    /* Optional: Limit the width of the text */
+}
+
+/* Flexbox helper classes */
+.full-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Centering text inside containers */
+.text-center-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Custom alignment for images */
+.image-container img {
+    display: block;
+    margin: auto;
+}
+
+/* Styling for paragraph text inside the overlay */
+.image-text-overlay p {
+    text-align: left;
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--bs-body-bg);
+}
+
+/* Shop Now button styling */
+.shop-now-button {
+    font-size: 1.25rem;    
+    max-width: 333px;
+    min-width: 260px;
+    margin: 0 auto;
+    background: var(--bs-body-bg);
+    color: var(--main-text-color-invers);    
+}
+
+/* ------------------------------- bootstrap toasts */
+/* Styling for message containers (toast notifications) */
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+/* Toast-specific customizations */
+.custom-toast {
+    overflow: visible;
+}
+
+/* Toast decoration (e.g., separator) */
+.toast-capper {
+    height: 2px;
+}
+
+/* Responsive styling for smaller devices */
+@media (max-width: 768px) {
+    .image-text-overlay p {
+        font-size: 0.8rem;
+        /* Smaller font size for mobile devices */
+    }
+
+    .product-image {
+        max-width: 200px;
+        /* Cap the image width */
+    }
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* Set consistent font size for product name */
+.product-name {
+    font-size: 1.25rem;
+    /* Adjust as needed */
+    font-weight: bold;
+}
+
+/* Set consistent font size for product price */
+.product-price {
+    font-size: 1.5rem;
+    /* Adjust as needed */
+    color: var(--main-text-color-invers);
+}
+
+/* Styles for consistent icon sizing (based on Bulma framework) */
+.icon-white {
+    color: var(--main-text-color);
+    transition: color 0.3s ease;
+    /* Smooth transition effect */
+}
+
+.icon-white:hover {
+    color: #ccc;
+    /* Light gray on hover */
+}
+
+/* Inverse hover effect for navigation links and Shop Now button */
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-item:hover,
+.navbar .btn:hover,
+.shop-now-button:hover {
+    background-color: var(--main-text-color-invers) !important;
+    color: var(--main-text-color) !important;
+}
+
+/* Optional: Smooth transition */
+.navbar-nav .nav-link,
+.navbar .btn,
+.navbar-nav .dropdown-item,
+.shop-now-button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply a line-through (strikethrough) style */
+.strike-through {
+    text-decoration: line-through;
+}
+
+/* Adjust input widths for specific containers */
+.wider-input input {
+    width: 120%;
+}
+
+.fixed-width-label {
+    width: auto;
+}
+
+.transparent-gray-bg {
+    background-color: rgba(128, 128, 128, 0.75);
+}
+
+.shrink-image {
+    transform: scale(0.9);
+}
+
+.btn-black {
+    background: var(--main-text-color-invers);
+    color: var(--main-text-color);
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: var(--main-text-color-invers);
+    color: var(--main-text-color);
+}
+
+.text-black {
+    color: var(--main-text-color-invers) !important;
+}
+
+.border-black {
+    border: 1px solid var(--main-text-color-invers) !important;
+}
+
+.bg-black {
+    background: var(--main-text-color-invers) !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
+    background: var(--bs-body-bg);
+    z-index: -1;
+}
+
+a.category-badge>span.badge:hover {
+    background: var(--primary-color-highlight) !important;
+    color: #fff !important;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link {
+    cursor: pointer;
+}
+
+/* ------------------------ HAMBURGER MENU ------------------------ */
+/* Checkbox hack to toggle the hamburger menu */
+#menu__toggle {
+    opacity: 0;
+}
+
+/* Hamburger menu button animations */
+#menu__toggle:checked+.menu__btn>span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+#menu__toggle:checked+.menu__btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/* Sliding animation for menu box */
+#menu__toggle:checked~.menu__box {
+    left: 0 !important;
+}
+
+/* Styling for the hamburger menu button */
+.menu__btn {
+    position: fixed;
+    top: 15px;
+    left: 25px;
+    width: 20px;
+    height: 20px;
+    z-index: 1000;
+    background-color: var(--bs-body-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover transition */
+}
+
+/* Hover effect for the hamburger menu button */
+.menu__btn:hover {
+    background-color: #adadad;
+    /* Light gray background on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge on hover */
+}
+
+.menu__btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    /* Default bar color */
+    position: relative;
+    transition: background-color 0.3s ease;
+    /* Smooth color transition */
+}
+
+.menu__btn span::before,
+.menu__btn span::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    /* Default bar color */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover transition */
+}
+
+.menu__btn span::before {
+    top: -6px;
+    /* Position the top bar */
+}
+
+.menu__btn span::after {
+    top: 6px;
+    /* Position the bottom bar */
+}
+
+.menu__btn:hover span,
+.menu__btn:hover span::before,
+.menu__btn:hover span::after {
+    background-color: var(--accent-color);
+    /* Change bar color on hover */
+}
+
+/* Optional: Animation effect for a more dynamic hover */
+.menu__btn:hover span::before {
+    transform: translateY(2px);
+    /* Slight movement for top bar */
+}
+
+
+.menu__box {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+    z-index: 999;
+    /* Ensure menu appears above other content */
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+
+.menu__item:hover {
+    background-color: #CFD8DC;
+}
+
+.font-head {
+    color: var(--bs-body-bg);
+    font-size: 75px;
+}
+
+.no-bullets {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.no-bullets li {
+    margin-bottom: 0;
+}
+
+/* Add hover effect for the entire link */
+.hover-effect:hover {
+    color: var(--accent-color);
+    /* Change text/icon color */
+    background-color: rgba(0, 123, 255, 0.1);
+    /* Subtle background change */
+    border-radius: 8px;
+    /* Add rounded corners if needed */
+    transition: background-color 0.3s, color 0.3s;
+    /* Smooth hover transition */
+}
+
+/* Specific hover effect for the icon */
+.hover-effect i {
+    transition: transform 0.3s;
+    /* Smooth scaling effect */
+}
+
+.hover-effect:hover i {
+    transform: scale(1.2);
+    /* Slightly enlarge the icon on hover */
+    color: var(--accent-color);
+    /* Optional: Change icon color on hover */
+}
+
+.hover-bg {
+    background-color: var(--bs-body-bg); /* Default background color */
+    color: var(--main-text-color-invers); /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.hover-bg:hover {
+    background-color: var(--main-text-color-invers);
+    /* Background color on hover */
+    color: var(--bs-body-bg);
+    /* Text color on hover */
+}
+
+.account-cart {
+    display: none;
+    z-index: 999;
+}
+
+/* For screens smaller than 500px */
+@media (max-width: 500px) {
+    .menu__box {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        height: 100%;
+        background-color: var(--bs-body-bg);
+        box-shadow: 2px 2px 6px var(--bs-body-bg-transparent);
+        z-index: 999;
+        transition: left 0.25s ease-in-out;
+    }
+
+    .menu__item {
+        padding: 12px 24px;
+        font-size: 20px;
+        color: #333;
+        font-weight: 600;
+        text-decoration: none;
+        transition-duration: .25s;
+    }
+
+    .menu__item:hover {
+        background-color: #CFD8DC;
+    }
+
+    #menu__toggle:checked~.menu__box {
+        left: 0;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    #main-nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        padding: 5px;
+        background-color: var(--bs-body-bg);
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling */
+        border: 1px solid #ddd; /* Optional: Add border for better visibility */
+        scroll-behavior: smooth; /* Smooth scrolling for modern browsers */
+    }
+
+    table {
+        min-width: 700px;
+        /* Ensure the table is wider than the viewport */
+        white-space: nowrap;
+        /* Prevent text from wrapping */
+    }
+
+    th,
+    td {
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+        padding: 8px;
+        /* Reduce padding */
+    }    
+
+    h1,
+    h2 {
+        font-size: 1.5rem;
+        /* Adjust heading sizes */
+    }
+
+    .cart-box h2,
+    .cart-box.nav-link,
+    .cart-box.nav-link.hover-bg {
+        display: none;
+        /* Hide the h2, nav-link, and hover-bg */
+    }
+
+    .product-image {
+        max-width: 150px;
+        /* Cap the image width */
+    }
+}
+
+/* Media query for screens smaller than or equal to 991px */
+@media (max-width: 991px) {
+    .account-cart {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    .banner-head {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .font-head {
+        font-size: 30px;
+    }
+
+    .logo-font {
+        font-size: 1.85rem;
+        /* Font size for screens up to 991px */
+        text-align: center;
+    }
+
+    /* Hide the navbar on small screens */
+    .navbar {
+        display: none;
+        /* Hide the default navbar */
+    }
+
+    /* Show hamburger menu button */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Hide main navigation by default */
+    #main-nav {
+        display: none;
+        transition: max-height 0.3s ease-in-out;
+        overflow: hidden;
+    }
+
+    /* Show the navbar when the hamburger menu is checked */
+    #menu__toggle:checked~.menu__box {
+        left: 0;
+    }
+
+    /* Make the menu appear when hovering over hamburger */
+    .hamburger-menu:hover+.menu__box {
+        left: 0;
+    }
+
+    .menu__box {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        /* Hide menu off-screen */
+        width: 300px;
+        height: 100%;
+        margin: 0;
+        padding: 80px 0;
+        list-style: none;
+        background-color: #ECEFF1;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+        transition: left 0.25s ease;
+        /* Smooth transition */
+        z-index: 999;
+        /* Ensure menu overlays all other elements */
+    }
+
+    .menu__item {
+        display: block;
+        padding: 12px 24px;
+        color: #333;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+        transition-duration: .25s;
+    }
+
+    .menu__item:hover {
+        background-color: #CFD8DC;
+    }
+}
+
+/* Media query for screens larger than 992px */
+@media (min-width: 992px) {
+
+    /* Hide hamburger menu on larger screens */
+    .hamburger-menu {
+        display: none;
+    }
+
+    /* Show the navbar on larger screens */
+    .navbar {
+        display: block;
+    }
+
+    /* Ensure the menu is visible (you can customize this if needed) */
+    #main-nav {
+        display: flex;
+        /* Or any other display style depending on your layout */
+    }
+
+    .menu__box {
+        display: none;
+        /* Hide hamburger menu by default */
+    }
+}

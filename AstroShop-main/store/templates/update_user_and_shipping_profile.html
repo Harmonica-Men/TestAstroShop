@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header -->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-4">
+        <div class="text-center text-white">
+            <br>
+            <h1 class="display-4 fw-bolder mt-5">Update Profile and Shipping Info</h1>
+            <p class="lead fw-normal text-white-40 mb-2">Update your user information and shipping details</p>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex justify-content-center align-items-center mt-3 mb-3" style="min-height: calc(60vh);">
+    <div class="row shadow-lg" style="width: 100%; max-width: 800px;">
+
+        <!-- Combined User and Shipping Information Form -->
+        <div class="col-md-12 p-4">
+            <h3 class="text-center"> <strong> User and Shipping Information  of {{ request.user.first_name }} {{ request.user.last_name }} </strong>
+            </h3>
+            <form method="POST" action="{% url 'update_user_and_shipping_profile' %}" class="mt-2">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <!-- User Information Column -->
+                    <div class="col-md-6">
+                        <h4>User Information</h4>
+                        {{ profile_form.as_p }}
+                    </div>
+
+                    <!-- Shipping Information Column -->
+                    <div class="col-md-6">
+                        <h4>Shipping Information</h4>
+                        {{ shipping_form.as_p }}
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mb-4">
+                    <a href="{% url 'products' %}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-secondary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

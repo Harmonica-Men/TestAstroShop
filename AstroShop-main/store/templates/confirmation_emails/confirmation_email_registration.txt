@@ -1,0 +1,6 @@
+Hello {{ username }},
+
+This is a confirmation of your registration at Astro Shop.
+
+Welcome,
+Astro Shop Team

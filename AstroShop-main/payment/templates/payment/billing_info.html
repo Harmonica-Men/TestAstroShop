@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-4">
+        <div class="text-center text-white">
+            <br>
+            <h1 class="display-4 fw-bolder mt-5">Pay whit PayPal</Details>
+            </h1>
+            <p class="lead fw-normal text-white-40 mb-2">All most there ...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex justify-content-center align-items-center mt-3 mb-3" style="min-height: calc(60vh);">
+    <div class="row shadow-lg" style="width: 100%; max-width: 850px;">
+        <div class="col-12 mt-3 mb-3">
+            <!-- Invoice Summary Card -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    Order Summary
+                </div>
+                <div class="card-body">
+                    <p><strong>Invoice UUID:</strong> {{ invoice }}</p> <!-- Display invoice number -->
+                    <div class="table-responsive">
+                        <!-- Order Summary Table -->
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col" style="text-align: left;">Product</th>
+                                    <th scope="col" style="text-align: right;">Price</th>
+                                    <th scope="col" style="text-align: right;">Qty</th>
+                                    <th scope="col" style="text-align: right;">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in cart_products %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td style="text-align: right;">
+                                        {% if product.is_sale %}
+                                        <span class="fa-solid fa-star" title="Sale!"></span> €{{ product.sale_price }}
+                                        {% else %}
+                                        €{{ product.price }}
+                                        {% endif %}
+                                    </td>
+                                    <td style="text-align: right;">
+                                        {% for key, value in quantities.items %}
+                                        {% if key == product.id|slugify %}
+                                        {{ value }}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td style="text-align: right;">
+                                        €{{ product|calculate_subtotal:quantities|floatformat:2 }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr class="product-price">
+                                    <th style="text-align: left;" colspan="3">Total:</th>
+                                    <th style="text-align: right;">€{{ totals }}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Shipping Info Column -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Shipping Info
+                        </div>
+                        <div class="card-body">
+                            Name: {{ shipping_info.shipping_full_name }}<br />
+                            Address 1: {{ shipping_info.shipping_address1 }}<br />
+                            Address 2: {{ shipping_info.shipping_address2 }}<br />
+                            City: {{ shipping_info.shipping_city }}<br />
+                            State: {{ shipping_info.shipping_state }}<br />
+                            Zipcode: {{ shipping_info.shipping_zipcode }}<br />
+                            Country: {{ shipping_info.shipping_country }}<br />
+                        </div>
+                    </div>
+                </div>
+                <!-- Payment Info Column -->
+                {% if request.user.is_authenticated %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="{% url 'update_payment_paypal' %}" class="btn btn-outline-secondary">Update Pay-Pal
+                                Payment Profile </a>
+                        </div>
+                        <div class="card-body">
+                            Name on Card: {{ payment_form.card_name.value }}<br/>
+                            Card Number: {{ payment_form.card_number.value }}<br/>
+                            Expiration Date: {{ payment_form.card_exp_date.value }}<br/>
+                            CVV: {{ payment_form.card_cvv_number.value }}<br/>
+                            Address 1: {{ payment_form.card_address1.value }}<br/>
+                            Address 2: {{ payment_form.card_address2.value }}<br/>
+                            City: {{ payment_form.card_city.value }}<br/>
+                            State: {{ payment_form.card_state.value }}<br/>
+                            Zipcode: {{ payment_form.card_zipcode.value }}<br/>
+                            Country: {{ payment_form.card_country.value }}<br/>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                <button class="btn btn-outline-secondary btn-lg ml-5 mt-3 mb-3">
+                    {{ paypal_form.render }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

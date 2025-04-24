@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-4">
+        <div class="text-center text-white">
+            <br>
+            <h1 class="display-4 fw-bolder mt-5">Register</h1>          
+            <p class="lead fw-normal text-white-40 mb-2">Registration Page ...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex justify-content-center align-items-center mt-3 mb-3" style="min-height: calc(58vh);">
+    <div class="row shadow-lg" style="width: 100%; max-width: 500px;">
+         <div class="col-md-12 mt-3">
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                {{ form.as_p }}               
+                <!-- Button wrapped in a div for centering -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-secondary mt-3 mb-3">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

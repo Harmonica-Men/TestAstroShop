@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-4">
+        <div class="text-center text-white">
+            <br>
+            <h1 class="display-4 fw-bolder mt-5">Search Products</h1>          
+            <p class="lead fw-normal text-white-40 mb-2">Find What You're Looking For...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex justify-content-center align-items-center mt-3 mb-3" style="min-height: calc(60vh);">
+    <div class="row no-gutters justify-content-center mb-3 mt-2">
+        <div class="p-4 shadow-lg mb-3" style="width: 400px; height: 200px;">
+            <div class="card-header text-center">
+                Search Products
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'search' %}">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Search For Products"
+                                            name="searched">
+                                    </td>
+                                    <td class="text-end">
+                                        <button type="submit" class="btn btn-secondary">
+                                            Search
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Product Display Section -->
+        <div class="row no-gutters gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% if searched %}
+            {% for product in searched %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% if product.is_sale %}
+                    <!-- Sale Badge -->
+                    <div class="badge bg-black text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                        Sale
+                    </div>
+                    {% endif %}
+                    <!-- Product Image -->
+                    <a href="{% url 'product' product.id %}">
+                        <img class="card-img-top img-fluid shrink-image" src="{{ product.image.url }}"
+                            alt="{{ product.name }}">
+                    </a>
+                    <!-- Product Details -->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product Name -->
+                            <h5 class="fw-bolder">{{ product.name }}</h5>
+                            {% if product.is_sale %}
+                            <!-- Sale Label and Price -->
+                            <div class="d-flex justify-content-center small text-danger mb-2">
+                                <span class="fa-regular fa-star"></span>
+                                <strong class="mx-2" style="font-size: 1.25rem;">Sale!</strong>
+                                <span class="fa-regular fa-star"></span>
+                            </div>
+                            <!-- Sale Price -->
+                            <div class="d-flex justify-content-center">
+                               
+                                <div class="text-muted text-center mr-2" style="text-decoration: line-through;">
+                                    €{{ product.price }}</div>
+                                <strong class="text-black" style="font-size: 1.25rem;">€{{ product.sale_price }}</strong>
+
+                            </div>
+                            {% else %}
+                            <!-- Regular Price -->
+                            <strong class="text-black">€{{ product.price }} </strong>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
